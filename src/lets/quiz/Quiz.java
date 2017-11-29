@@ -3,6 +3,8 @@ package lets.quiz;
 import java.util.ArrayList;
 
 public class Quiz {
+
+    // Some fields for keeping track of score and the name of the quiz, plus a place for questions to go.
     private int maxScore = 0;
     private int score = 0;
     private String name;
@@ -12,19 +14,16 @@ public class Quiz {
         this.name = name;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public int getMaxScore() {
-        return maxScore;
-    }
-
+    // Lets you add a question to the quiz, changing the max possible score accordingly.
     public void addQuestion(Question newQuestion) {
         maxScore += 1;
         questions.add(newQuestion);
     }
 
+    /* This nominally runs the quiz, but in practice is just iterating through the
+     * question list and calling askQuestion() on each of them. Prints final score
+     * after all questions are asked.
+     */
     public void runQuiz() {
         System.out.println(name + "\n");
         for (Question question :
